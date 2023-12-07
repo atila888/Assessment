@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact", "Contact\Contact.csproj", "{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactService", "ContactService", "{36083B0A-C63D-490A-AB1A-95C1C90B8BF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E7ADD2D-2B61-4871-97BE-F78428C3248A}
+	EndGlobalSection
+EndGlobal
