@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Contact.Repository.Repository.Interface
 {
-	public interface IPersonRepository
+	public interface IContactInfoRepository
 	{
-		Task AddNewPerson(Person person);
-		Task DeletePerson(int id);
-		Task<List<Person>> GetPeople();
-		Task<Person> GetPersonInfo(int id);
+		Task AddContactInfo(ContactInfo contactInfo);
+		Task DeleteContactInfo(int id);
+		Task<List<ContactInfo>> GetPersonContactInfo(int idPerson);
 	}
 }

@@ -1,6 +1,9 @@
 ﻿using Contact.Business.Manager.Interface;
+using Contact.Repository.Entities;
 using Contact.Repository.Models.Request;
+using Contact.Repository.Models.Response;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Contact.Controllers
 {
@@ -9,9 +12,11 @@ namespace Contact.Controllers
 	public class ContactController : ControllerBase
 	{
 		private readonly IContactManager _contactManager;
-		public ContactController(IContactManager contactManager)
+		private readonly IReportManager _reportManager;
+		public ContactController(IContactManager contactManager, IReportManager reportManager)
 		{
 			_contactManager = contactManager;
+			_reportManager = reportManager;
 		}
 		[HttpPost("api/add-new-person")]
 		public async Task<bool> AddNewPerson(PersonRequest person)
@@ -20,29 +25,40 @@ namespace Contact.Controllers
 			return result;
 		}
 		[HttpPost("api/delete-person")]
-		public async Task<IActionResult> DeletePerson(int id)
+		public async Task<bool> DeletePerson(int id)
 		{
-			return StatusCode(200);
+			var result = await _contactManager.DeletePerson(id);
+			return result;
 		}
 		[HttpPost("api/add-contact-info")]
-		public async Task<IActionResult> AddContactInfo(ContactRequest contactRequest)
+		public async Task<bool> AddContactInfo(ContactRequest contactRequest)
 		{
-			return StatusCode(200);
+			var result = await _contactManager.AddContactInfo(contactRequest);
+			return result;
 		}
 		[HttpPost("api/delete-contact-info")]
-		public async Task<IActionResult> DeleteContactInfo(int id)
+		public async Task<bool> DeleteContactInfo(int id)
 		{
-			return StatusCode(200);
+			var result = await _contactManager.DeleteContactInfo(id);
+			return result;
 		}
 		[HttpGet("api/get-people")]
-		public async Task<IActionResult> GetPeople()
+		public async Task<List<Person>> GetPeople()
 		{
-			return StatusCode(200);
+			var result = await _contactManager.GetPeople();
+			return result;
 		}
 		[HttpGet("api/get-person-info")]
-		public async Task<IActionResult> GetPersonInfo(int id)
+		public async Task<PersonContactInfoResponse> GetPersonInfo(int id)
 		{
-			return StatusCode(200);
+			var result = await _contactManager.GetPersonInfo(id);
+			return result;
+		}
+		[HttpGet("api/get-person-info")]
+		public async Task<bool> GetLocationReport(string location)
+		{
+			var result = await _reportManager.GetLocationReport(location);
+			return result;
 		}
 	}
 }

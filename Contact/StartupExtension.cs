@@ -1,4 +1,5 @@
-﻿using Contact.Repository.DBContext;
+﻿using Contact.Business.Queue.Core;
+using Contact.Repository.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -33,6 +34,11 @@ namespace Contact
 			app.UseAuthorization();
 
 			app.MapControllers();
+		}
+		public static void AddCommonService(this IServiceCollection services, IConfiguration configuration)
+		{
+			services.Configure<RabbitMqConfiguration>(a => configuration.GetSection(nameof(RabbitMqConfiguration)).Bind(a));
+			services.AddSingleton<IRabbitMqService, RabbitMqService>();
 		}
 	}
 }
