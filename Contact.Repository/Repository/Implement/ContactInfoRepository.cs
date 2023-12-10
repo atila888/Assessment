@@ -1,5 +1,5 @@
-﻿using Contact.Repository.DBContext;
-using Contact.Repository.Entities;
+﻿using Contact.Repository.Entities;
+using Contact.Repository.Models;
 using Contact.Repository.Models.Request;
 using Contact.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Repository.Repository.Implement
 {
-	public class ContactInfoRepository : IContactInfoRepository
+    public class ContactInfoRepository : IContactInfoRepository
 	{
 		private readonly ApplicationContext _dbcontext;
 		public ContactInfoRepository(ApplicationContext dbContext)
@@ -25,7 +25,7 @@ namespace Contact.Repository.Repository.Implement
 		}
 		public async Task DeleteContactInfo(int id)
 		{
-			await _dbcontext.Set<ContactInfo>().Where(x => x.Id == id).ExecuteDeleteAsync();
+			await _dbcontext.Set<ContactInfo>().Where(x => x.IdContactInfo == id).ExecuteDeleteAsync();
 			await _dbcontext.SaveChangesAsync();
 		}
 		public async Task<List<ContactInfo>> GetPersonContactInfo(int idPerson)

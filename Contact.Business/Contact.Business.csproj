@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Queue\PublisherModel\" />
+    <Folder Include="Queue\Publisher\" />
   </ItemGroup>
 
 </Project>

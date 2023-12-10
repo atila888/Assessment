@@ -54,7 +54,7 @@ namespace Contact.Controllers
 			var result = await _contactManager.GetPersonInfo(id);
 			return result;
 		}
-		[HttpGet("api/get-person-info")]
+		[HttpGet("api/get-location-report")]
 		public async Task<bool> GetLocationReport(string location)
 		{
 			var result = await _reportManager.GetLocationReport(location);

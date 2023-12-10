@@ -92,7 +92,7 @@ namespace Contact.Business.Manager.Implement
 		public async Task<PersonContactInfoResponse> GetPersonInfo(int id)
 		{
 			var person = await _personRepository.GetPersonInfo(id);
-			var contactInfo = await _contactInfoRepository.GetPersonContactInfo(person.id);
+			var contactInfo = await _contactInfoRepository.GetPersonContactInfo(person.IdPerson);
 
 			PersonContactInfoResponse personContactInfoResponse = new PersonContactInfoResponse();
 			personContactInfoResponse.person = person;
