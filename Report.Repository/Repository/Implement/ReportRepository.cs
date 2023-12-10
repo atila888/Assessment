@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Report.Repository.DBContext;
 using Report.Repository.Entities;
 using Report.Repository.Models;
 using Report.Repository.Repository.Interface;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Report.Repository.Repository.Implement
 {
-	public class ReportRepository : IReportRepository
+    public class ReportRepository : IReportRepository
 	{
 		private readonly ApplicationContext _dbcontext;
 		public ReportRepository(ApplicationContext dbContext) 
@@ -26,7 +25,7 @@ namespace Report.Repository.Repository.Implement
 		}
 		public async Task UpdateReportLookup(ReportLookup reportLookup)
 		{
-			var result =await _dbcontext.Set<ReportLookup>().SingleOrDefaultAsync(x=>x.id== reportLookup.id);
+			var result = await _dbcontext.Set<ReportLookup>().SingleOrDefaultAsync(x => x.IdReportLookup == reportLookup.IdReportLookup);
 			result.Statu = "Tamamlandı";
 			await _dbcontext.SaveChangesAsync();
 		}

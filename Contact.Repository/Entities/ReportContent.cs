@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Report.Repository.Entities
+namespace Contact.Repository.Entities
 {
-	public class ReportLookup
+	public class ReportContent
 	{
 		[Key]
-		public int IdReportLookup { get; set; }
+		public int IdReportContent { get; set; }
 		public string Location { get; set; }
-		public DateTime RequestDate { get; set; }
-		public string Statu { get; set; }
+		public int PersonCount { get; set; }
+		public int PhoneCount { get; set; }
 	}
 }

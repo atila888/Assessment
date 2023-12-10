@@ -19,6 +19,7 @@ namespace Contact.Repository.Models
         public virtual DbSet<Person> Person { get; set; }
 		public virtual DbSet<ReportLookup> ReportLookup { get; set; }
 		public virtual DbSet<ContactInfo> ContactInfo { get; set; }
+		public virtual DbSet<ReportContent> ReportContent { get; set; }
 	}
 
 }

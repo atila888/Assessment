@@ -12,27 +12,29 @@ using System.Threading.Tasks;
 
 namespace Report.Business.Queue.Core
 {
-	public abstract class MessageConsumer<T> : BackgroundService
+	public abstract class MessageConsumer<T>:BackgroundService
 	{
 		private readonly IModel _model;
 		private readonly IConnection _connection;
 		public MessageConsumer(IRabbitMqService rabbitMqService)
 		{
 			_connection = rabbitMqService.CreateChannel();
+			_connection = rabbitMqService.CreateChannel();
 			_model = _connection.CreateModel();
-			_model.QueueDeclare("report", durable: true, exclusive: false, autoDelete: false);
+			_model.QueueDeclare(_queueName, durable: true, exclusive: false, autoDelete: false);
 			_model.ExchangeDeclare("UserExchange", ExchangeType.Fanout, durable: true, autoDelete: false);
-			_model.QueueBind("report", "UserExchange", string.Empty);
+			_model.QueueBind(_queueName, "UserExchange", string.Empty);
 		}
+		const string _queueName = "User";
 		protected override Task ExecuteAsync(CancellationToken stoppingToken)
 		{
+			stoppingToken.ThrowIfCancellationRequested();
 			var consumer = new AsyncEventingBasicConsumer(_model);
 			consumer.Received += ConsumerReceived;
-			_model.BasicConsume("report", false, consumer);
+			_model.BasicConsume("", false, consumer);
 
 			return Task.CompletedTask;
 		}
-
 		private async Task ConsumerReceived(object sender, BasicDeliverEventArgs @event)
 		{
 			try
@@ -48,5 +50,14 @@ namespace Report.Business.Queue.Core
 			catch{ }
 		}
 		public abstract Task HandleMessage(T message);
+		public override void Dispose()
+		{
+			if (_model != null)
+			{
+				_model.Close();
+				_model.Dispose();
+			}
+			base.Dispose();
+		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using Report.Repository.DBContext;
-using Report.Repository.Models;
+﻿using Report.Repository.Models;
 using Report.Repository.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Report.Repository.Repository.Implement
 {
-	public class ReportContentRepository : IReportContentRepository
+    public class ReportContentRepository : IReportContentRepository
 	{
 		private readonly ApplicationContext _dbcontext;
 		public ReportContentRepository(ApplicationContext dbContext)
@@ -18,8 +17,17 @@ namespace Report.Repository.Repository.Implement
 		}
 		public async Task AddReportContent(ReportContent reportContent)
 		{
-			await _dbcontext.Set<ReportContent>().AddAsync(reportContent);
-			await _dbcontext.SaveChangesAsync();
+			try
+			{
+				await _dbcontext.Set<ReportContent>().AddAsync(reportContent);
+				await _dbcontext.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+
 		}
 	}
 }

@@ -20,11 +20,11 @@ namespace Contact.Business.Queue.Core
 			var connection = _rabbitMqService.CreateChannel();
 			var channel = connection.CreateModel();
 
-			channel.QueueDeclare("report");
+			channel.QueueDeclare("");
 
 			var json = JsonConvert.SerializeObject(message);
 			var body = Encoding.UTF8.GetBytes(json);
-			channel.BasicPublish(exchange: "", routingKey: "report", body: body);
+			channel.BasicPublish("UserExchange",string.Empty,basicProperties: null,body: body);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Report.Repository.DBContext;
 using Report.Repository.Entities;
+using Report.Repository.Models;
 using Report.Repository.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Report.Repository.Repository.Implement
 {
-	public class ContactInfoRepository : IContactInfoRepository
+    public class ContactInfoRepository : IContactInfoRepository
 	{
 		private readonly ApplicationContext _dbcontext;
 		public ContactInfoRepository(ApplicationContext dbContext)
