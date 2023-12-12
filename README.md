@@ -9,6 +9,7 @@
 ## Getting Started
 
 -Projede kullanılan mimariler
+  
   -EventDriven
   
   -Dependency Injection
