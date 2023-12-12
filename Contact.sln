@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact", "Contact\Contact.csproj", "{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact", "Contact\Contact.csproj", "{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ContactService", "ContactService", "{36083B0A-C63D-490A-AB1A-95C1C90B8BF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Business", "Contact.Business\Contact.Business.csproj", "{EF2FD8CF-AD3D-4373-B6C5-8BC939E58AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Business", "Contact.Business\Contact.Business.csproj", "{EF2FD8CF-AD3D-4373-B6C5-8BC939E58AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Repository", "Contact.Repository\Contact.Repository.csproj", "{1E46BB1C-51B4-4864-BB11-64B3A00C9038}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Test", "Contact.Test\Contact.Test.csproj", "{F9E69021-1A34-4569-862E-CE1A86C45CA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contact.Repository", "Contact.Repository\Contact.Repository.csproj", "{1E46BB1C-51B4-4864-BB11-64B3A00C9038}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{39752DEC-9F2C-429E-A54D-400A2BE7D209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report", "Report\Report.csproj", "{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report", "Report\Report.csproj", "{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Business", "Report.Business\Report.Business.csproj", "{E1562C23-C67B-44DA-A0E0-EAD76BE8C7D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Business", "Report.Business\Report.Business.csproj", "{E1562C23-C67B-44DA-A0E0-EAD76BE8C7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Repository", "Report.Repository\Report.Repository.csproj", "{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Repository", "Report.Repository\Report.Repository.csproj", "{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.Test", "Contact.Test\Contact.Test.csproj", "{30A5ABAB-41D9-418B-9257-E6361E31405F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,6 @@ Global
 		{1E46BB1C-51B4-4864-BB11-64B3A00C9038}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E46BB1C-51B4-4864-BB11-64B3A00C9038}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E46BB1C-51B4-4864-BB11-64B3A00C9038}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9E69021-1A34-4569-862E-CE1A86C45CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9E69021-1A34-4569-862E-CE1A86C45CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9E69021-1A34-4569-862E-CE1A86C45CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9E69021-1A34-4569-862E-CE1A86C45CA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,6 +51,10 @@ Global
 		{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A5ABAB-41D9-418B-9257-E6361E31405F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A5ABAB-41D9-418B-9257-E6361E31405F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A5ABAB-41D9-418B-9257-E6361E31405F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A5ABAB-41D9-418B-9257-E6361E31405F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,10 +63,10 @@ Global
 		{39A647E0-5DB2-4095-AC38-7DDB81DEBBD3} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
 		{EF2FD8CF-AD3D-4373-B6C5-8BC939E58AD5} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
 		{1E46BB1C-51B4-4864-BB11-64B3A00C9038} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
-		{F9E69021-1A34-4569-862E-CE1A86C45CA8} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
 		{2A6EA26D-4A02-467D-9C4D-4CDDCDC778E0} = {39752DEC-9F2C-429E-A54D-400A2BE7D209}
 		{E1562C23-C67B-44DA-A0E0-EAD76BE8C7D7} = {39752DEC-9F2C-429E-A54D-400A2BE7D209}
 		{4DE0F8C6-F680-4EF3-A424-0FD9F2A9E5CE} = {39752DEC-9F2C-429E-A54D-400A2BE7D209}
+		{30A5ABAB-41D9-418B-9257-E6361E31405F} = {36083B0A-C63D-490A-AB1A-95C1C90B8BF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E7ADD2D-2B61-4871-97BE-F78428C3248A}

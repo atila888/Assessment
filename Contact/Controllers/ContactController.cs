@@ -48,13 +48,13 @@ namespace Contact.Controllers
 			var result = await _contactManager.GetPeople();
 			return result;
 		}
-		[HttpGet("api/get-person-info")]
+		[HttpGet("api/get-person-info/{id}")]
 		public async Task<PersonContactInfoResponse> GetPersonInfo(int id)
 		{
 			var result = await _contactManager.GetPersonInfo(id);
 			return result;
 		}
-		[HttpGet("api/get-location-report")]
+		[HttpGet("api/get-location-report/{location}")]
 		public async Task<bool> GetLocationReport(string location)
 		{
 			var result = await _reportManager.GetLocationReport(location);

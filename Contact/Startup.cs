@@ -11,10 +11,12 @@ namespace Contact
 {
     public class Startup
 	{
+		public const string TestEnv = "X_UNIT_TEST";
 		public IConfiguration Configuration { get; }
 		public Startup(IConfiguration configuration)
 		{
 			this.Configuration = configuration;
+			StartupExtension.Configuration = configuration;
 		}
 
 		public void ConfigureServices(IServiceCollection services)
@@ -44,6 +46,7 @@ namespace Contact
 	}
 	public static class StartupExtension
 	{
+		public static IConfiguration Configuration { get; set; }
 		public static void AddManagers(this IServiceCollection services)
 		{
 			services.AddScoped<IContactManager, ContactManager>();
