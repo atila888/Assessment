@@ -9,6 +9,8 @@
   <ItemGroup>
     <Folder Include="Models\Response\" />
     <Folder Include="Models\Request\" />
+    <Folder Include="Repository\Implement\" />
+    <Folder Include="Repository\Interface\" />
   </ItemGroup>
 
   <ItemGroup>

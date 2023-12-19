@@ -11,11 +11,6 @@ namespace Report.Business.Helper
 {
     public static class HTTPClientWrapper<T> where T : class
     {
-        /// <summary>
-        /// Get Metodlu endpoint için
-        /// </summary>
-        /// <param name="url">API Url</param>
-        /// <returns>T Generic Türünde Geri dönüş Yapacak</returns>
         public static async Task<T> GetAsync(string url)
         {
             T result = null;
@@ -36,12 +31,6 @@ namespace Report.Business.Helper
             return result;
         }
 
-        /// <summary>
-        /// Post Metodlu endpoint için
-        /// </summary>
-        /// <param name="apiUrl">API Url</param>
-        /// <param name="postObject">Post Nesnesi</param>
-        /// <returns>T Generic Türünde Geri dönüş Yapacak</returns>
         public static async Task<T> PostAsync(string apiUrl, T postObject)
         {
             T result = null;
