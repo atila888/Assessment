@@ -1,7 +1,5 @@
 ﻿using Report.Business.Manager.Implement;
 using Report.Business.Manager.Interface;
-using Report.Repository.Repository.Implement;
-using Report.Repository.Repository.Interface;
 
 namespace Report.Extensions
 {
@@ -14,9 +12,7 @@ namespace Report.Extensions
         }
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
-            services.AddScoped<IReportContentRepository, ReportContentRepository>();
-            services.AddScoped<IReportRepository, ReportRepository>();
+            
         }
     }
 }
