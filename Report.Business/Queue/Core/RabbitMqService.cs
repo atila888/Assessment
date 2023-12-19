@@ -21,7 +21,8 @@ namespace Report.Business.Queue.Core
 			{
 				UserName = _configuration.Username,
 				Password = _configuration.Password,
-				HostName = _configuration.HostName
+				HostName = _configuration.HostName,
+				Ssl = { ServerName= _configuration.HostName }
 			};
 			connection.DispatchConsumersAsync = true;
 			var channel = connection.CreateConnection();
