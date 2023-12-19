@@ -1,0 +1,53 @@
+version: '3.1'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    tty: true
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  postgress:
+   image: postgres
+   hostname: postgress
+   restart: always
+   ports:
+     - 5432:5432
+   environment:
+     POSTGRES_USER: postgres
+     POSTGRES_PASSWORD: example
+  adminer:
+   image: adminer
+   restart: always
+   ports:
+     - 8080:8080
+   
+  contact-api:
+   image: ${DOCKER_REGISTRY-}contact.api
+   restart: always
+   build:
+     context: .
+     dockerfile: Contact/Dockerfile
+   depends_on:
+     - rabbitmq
+     - postgress
+   ports:
+     - 49154:80
+
+  report-api:
+   image: ${DOCKER_REGISTRY-}report.api
+   restart: always
+   build:
+     context: .
+     dockerfile: Report/Dockerfile
+   depends_on:
+     - rabbitmq
+     - postgress
+   ports:
+     - 49282:80

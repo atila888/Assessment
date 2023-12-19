@@ -3,6 +3,7 @@ using Report.Business.Manager.Implement;
 using Report.Business.Manager.Interface;
 using Report.Business.Queue.Core;
 using Report.Business.Queue.Subscriber;
+using Report.Extensions;
 using Report.Repository.Models;
 using Report.Repository.Repository.Implement;
 using Report.Repository.Repository.Interface;
@@ -11,11 +12,13 @@ namespace Report
 {
     public class Startup
 	{
-		public IConfiguration Configuration { get; }
+        public const string TestEnv = "X_UNIT_TEST";
+        public IConfiguration Configuration { get; }
 		public Startup(IConfiguration configuration)
 		{
-			this.Configuration = configuration;
-		}
+            this.Configuration = configuration;
+            StartupExtension.Configuration = configuration;
+        }
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddEndpointsApiExplorer();
@@ -23,13 +26,11 @@ namespace Report
 			services.AddSingleton<IRabbitMqService, RabbitMqService>();
 			services.AddHostedService<ReportSubscriber>();
 
-			services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationContext>(
+			services.AddDbContext<ApplicationContext>(
 				options => options.UseNpgsql(Configuration.GetConnectionString("PostgresqlConnection")));
 
 			services.AddManagers();
 			services.AddRepositories();
-
-
 		}
 
 		public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -38,17 +39,5 @@ namespace Report
 			app.MapControllers();
 		}
 	}
-	public static class StartupExtension
-	{
-		public static void AddManagers(this IServiceCollection services)
-		{
-			services.AddScoped<IReportManager, ReportManager>();
-		}
-		public static void AddRepositories(this IServiceCollection services)
-		{
-			services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
-			services.AddScoped<IReportContentRepository, ReportContentRepository>();
-			services.AddScoped<IReportRepository, ReportRepository>();
-		}
-	}
+
 }

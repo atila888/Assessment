@@ -14,7 +14,10 @@ namespace Contact.Repository.Models
 		//dotnet ef database update --project Contact.Repository --startup-project Contact
 		//dotnet ef migrations remove --project Contact.Repository --startup-project Contact
 		//dotnet ef migrations list --project Contact.Repository --startup-project Contact
-		public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
+		public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) 
+		{
+            this.Database.EnsureCreated();
+        }
 
         public virtual DbSet<Person> Person { get; set; }
 		public virtual DbSet<ReportLookup> ReportLookup { get; set; }
