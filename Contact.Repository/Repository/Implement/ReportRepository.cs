@@ -1,6 +1,7 @@
 ﻿using Contact.Repository.Entities;
 using Contact.Repository.Models;
 using Contact.Repository.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,11 @@ namespace Contact.Repository.Repository.Implement
 			await _dbcontext.Set<ReportLookup>().AddAsync(reportLookup);
 			await _dbcontext.SaveChangesAsync();
 		}
-	}
+        public async Task UpdateReportLookup(ReportLookup reportLookup)
+        {
+            var result = await _dbcontext.Set<ReportLookup>().SingleOrDefaultAsync(x => x.IdReportLookup == reportLookup.IdReportLookup);
+            result.Statu = "Tamamlandı";
+            await _dbcontext.SaveChangesAsync();
+        }
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Report.Business.Helper;
 using Report.Business.Queue.Core;
 using Report.Repository.Entities;
 using Report.Repository.Models;
@@ -25,7 +26,18 @@ namespace Report.Business.Queue.Subscriber
 
 		public override async Task HandleMessage(ReportLookup reportLookup)
 		{
-			using (var scope = _serviceProvider.CreateScope())
+			try
+			{
+				var result = await HTTPClientWrapper<ReportLookup>.GetAsync("");
+            }
+			catch (Exception)
+			{
+
+				throw;
+			}
+            
+
+            using (var scope = _serviceProvider.CreateScope())
 			{
 				IReportRepository _reportRepository = scope.ServiceProvider.GetService<IReportRepository>();
 				IContactInfoRepository _contactInfoRepository = scope.ServiceProvider.GetService<IContactInfoRepository>();
