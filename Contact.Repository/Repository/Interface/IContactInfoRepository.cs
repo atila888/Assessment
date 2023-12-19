@@ -13,5 +13,8 @@ namespace Contact.Repository.Repository.Interface
 		Task AddContactInfo(ContactInfo contactInfo);
 		Task DeleteContactInfo(int id);
 		Task<List<ContactInfo>> GetPersonContactInfo(int idPerson);
-	}
+		Task<int> PhoneCountWithLocation(string location);
+        Task<int> PersonCountWithLocation(string location);
+
+    }
 }

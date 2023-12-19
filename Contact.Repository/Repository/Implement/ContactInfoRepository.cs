@@ -33,5 +33,15 @@ namespace Contact.Repository.Repository.Implement
 			var result = await _dbcontext.Set<ContactInfo>().Where(x => x.IdPerson == idPerson).ToListAsync();
 			return result;
 		}
-	}
+        public async Task<int> PhoneCountWithLocation(string location)
+        {
+            var result = await _dbcontext.Set<ContactInfo>().Where(x => x.ContactType == (int)ContactType.Phone && x.Content == location).CountAsync();
+            return result;
+        }
+        public async Task<int> PersonCountWithLocation(string location)
+        {
+            var result = await _dbcontext.Set<ContactInfo>().Where(x => x.ContactType == (int)ContactType.Location && x.Content == location).CountAsync();
+            return result;
+        }
+    }
 }

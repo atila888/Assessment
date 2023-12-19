@@ -13,10 +13,18 @@ namespace Contact.Business.Manager.Implement
 	public class ReportManager : IReportManager
 	{
 		private readonly IReportRepository _reportRepository;
-		private readonly IMessageProducer _messageProducer;
-		public ReportManager(IReportRepository reportRepository,IMessageProducer messageProducer)
+        private readonly IContactInfoRepository _contactInfoRepository;
+        private readonly IReportContentRepository _reportContentRepository;
+        private readonly IMessageProducer _messageProducer;
+		public ReportManager(
+			IReportRepository reportRepository,
+			IContactInfoRepository contactInfoRepository,
+            IReportContentRepository reportContentRepository,
+            IMessageProducer messageProducer)
 		{
 			_reportRepository= reportRepository;
+			_contactInfoRepository= contactInfoRepository;
+			_reportContentRepository= reportContentRepository;
 			_messageProducer= messageProducer;
 		}
 		public async Task<bool> GetLocationReport(string location)
@@ -39,5 +47,25 @@ namespace Contact.Business.Manager.Implement
 				return false;
 			}
 		}
-	}
+        public async Task<bool> ExecLocationReport(ReportLookup reportLookup)
+        {
+            try
+            {
+                ReportContent reportContent = new ReportContent();
+                reportContent.Location = reportLookup.Location;
+                reportContent.PersonCount = await _contactInfoRepository.PersonCountWithLocation(reportLookup.Location);
+                reportContent.PhoneCount = await _contactInfoRepository.PhoneCountWithLocation(reportLookup.Location);
+
+                await _reportContentRepository.AddReportContent(reportContent);
+
+                await _reportRepository.UpdateReportLookup(reportLookup);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
 }
