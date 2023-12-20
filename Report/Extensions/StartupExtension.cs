@@ -1,5 +1,6 @@
 ﻿using Report.Business.Manager.Implement;
 using Report.Business.Manager.Interface;
+using Report.Business.Settings;
 
 namespace Report.Extensions
 {
@@ -13,6 +14,10 @@ namespace Report.Extensions
         public static void AddRepositories(this IServiceCollection services)
         {
             
+        }
+        public static void AddSettings(this IServiceCollection services)
+        {
+            services.Configure<PostSetting>(Configuration.GetSection("PostUrl"));
         }
     }
 }
