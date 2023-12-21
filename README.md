@@ -20,7 +20,17 @@
   
 -Başlarken:
   
-  -Eğer Docker Compose ile container üzerinde çalıştırılacaksa herhangi bir configürasyona gerek yok
+  -Eğer Docker Compose ile container üzerinde çalıştırılacaksa herhangi bir configürasyona gerek yok.Projenin bulunduğu aşağıdaki cmd komutunun çalıştırılması yeterlidir.
+	  
+	  docker-compose up --build
+  
+  -Docker Compose dosyasında report service başlangıçta bir kaç kere restart atabilir. RabbitMQ tam ayaklanmadığı için hata verdiğinden restart atabilir.
+  
+  -ContactService ve ReportService çalıştıktan sonra aşağıdaki URL den erişebilirsiniz.
+     
+	 ContactService : http://localhost:49154/swagger/index.html
+	 
+	 ReportService  : http://localhost:49282/swagger/index.html
   
   -Eğer Local olarak çalıştırılacaksa:
   
