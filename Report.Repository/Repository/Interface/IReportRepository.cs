@@ -10,5 +10,6 @@ namespace Report.Repository.Repository.Interface
     public interface IReportRepository
     {
         Task<List<ReportLookup>> GetReportList();
+        Task<List<ReportContent>> GetReportListDetail(int id);
     }
 }

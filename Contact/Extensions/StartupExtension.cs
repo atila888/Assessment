@@ -20,6 +20,7 @@ namespace Contact.Extensions
             services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
+            services.AddScoped<IReportContentRepository, ReportContentRepository>();
         }
     }
 }

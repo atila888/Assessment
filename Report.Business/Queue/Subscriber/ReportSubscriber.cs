@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Report.Business.Helper;
 using Report.Business.Queue.Core;
 using Report.Business.Settings;
 using Report.Repository.Entities;
@@ -9,6 +8,8 @@ using Report.Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,14 +29,18 @@ namespace Report.Business.Queue.Subscriber
 
 		public override async Task HandleMessage(ReportLookup reportLookup)
 		{
+			Console.WriteLine("Log : RabbitMQ kuyruğu okundu");
 			try
 			{
-				await HTTPClientWrapper<ReportLookup>.PostAsync(_postSetting.PostUrl,reportLookup);
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(_postSetting.BaseAdress);
+                var result = await client.PostAsync(_postSetting.PostUrl, reportLookup, new JsonMediaTypeFormatter());
+                string resultContent = await result.Content.ReadAsStringAsync();
+                Console.WriteLine(resultContent);
             }
-			catch (Exception)
+			catch (Exception ex)
 			{
-
-				throw;
+                Console.WriteLine("Post işleminde hata. Hata Detayları :" + ex.Message);
 			}
 		}
 	}

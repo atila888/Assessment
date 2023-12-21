@@ -19,5 +19,11 @@ namespace Report.Controllers
 			var result = await _reportManager.GetReportList();
 			return result;
 		}
-	}
+        [HttpGet("api/get-report-list-detail/{id}")]
+        public async Task<List<ReportContent>> GetReportListDetail(int id)
+        {
+            var result = await _reportManager.GetReportListDetail(id);
+            return result;
+        }
+    }
 }
