@@ -3,6 +3,7 @@ using Report.Business.Manager.Implement;
 using Report.Business.Manager.Interface;
 using Report.Business.Queue.Core;
 using Report.Business.Queue.Subscriber;
+using Report.Business.Settings;
 using Report.Extensions;
 using Report.Repository.Models;
 using Report.Repository.Repository.Implement;
@@ -23,7 +24,8 @@ namespace Report
 		{
 			services.AddEndpointsApiExplorer();
 			services.Configure<RabbitMqConfiguration>(a => Configuration.GetSection(nameof(RabbitMqConfiguration)).Bind(a));
-			services.AddSingleton<IRabbitMqService, RabbitMqService>();
+            services.Configure<PostSetting>(Configuration.GetSection("PostSetting"));
+            services.AddSingleton<IRabbitMqService, RabbitMqService>();
 			services.AddHostedService<ReportSubscriber>();
 
 			services.AddDbContext<ApplicationContext>(

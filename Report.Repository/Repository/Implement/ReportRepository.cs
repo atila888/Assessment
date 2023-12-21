@@ -23,5 +23,10 @@ namespace Report.Repository.Repository.Implement
             var result = await _dbcontext.Set<ReportLookup>().ToListAsync();
             return result;
         }
+        public async Task<List<ReportContent>> GetReportListDetail(int id)
+        {
+            var result = await _dbcontext.Set<ReportContent>().Where(x => x.IdReportContent == id).ToListAsync();
+            return result;
+        }
     }
 }

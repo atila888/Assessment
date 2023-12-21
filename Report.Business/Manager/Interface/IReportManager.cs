@@ -10,5 +10,7 @@ namespace Report.Business.Manager.Interface
 	public interface IReportManager
 	{
 		Task<List<ReportLookup>> GetReportList();
-	}
+		Task<List<ReportContent>> GetReportListDetail(int id);
+
+    }
 }

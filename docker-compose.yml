@@ -49,5 +49,6 @@ services:
    depends_on:
      - rabbitmq
      - postgress
+     - contact-api
    ports:
      - 49282:80

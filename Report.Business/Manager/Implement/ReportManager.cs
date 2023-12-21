@@ -22,5 +22,10 @@ namespace Report.Business.Manager.Implement
 			var reportLookup = await _reportRepository.GetReportList();
 			return reportLookup;
 		}
-	}
+        public async Task<List<ReportContent>> GetReportListDetail(int id)
+        {
+            var reportLookup = await _reportRepository.GetReportListDetail(id);
+            return reportLookup;
+        }
+    }
 }

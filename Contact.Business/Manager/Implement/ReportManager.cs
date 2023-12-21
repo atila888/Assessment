@@ -40,7 +40,9 @@ namespace Contact.Business.Manager.Implement
 
 				_messageProducer.SendMessage(reportLookup);
 
-				return true;
+                Console.WriteLine("Log : RabbitMQ kuyruğuna yazıldı");
+
+                return true;
 			}
 			catch 
 			{
@@ -49,6 +51,7 @@ namespace Contact.Business.Manager.Implement
 		}
         public async Task<bool> ExecLocationReport(ReportLookup reportLookup)
         {
+            Console.WriteLine("Log : HttpClient üzerinden istek geldi");
             try
             {
                 ReportContent reportContent = new ReportContent();
