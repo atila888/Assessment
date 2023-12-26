@@ -44,9 +44,9 @@
 	  
 	  Sonrasında Code first işlemleri için gerekli komutlar ContactService.Contact.Repository.Models altında bulunan ApplicationContext içerisinde açıklama satırı olarak vardır.
 	  
-##Usage
+## Usage
 
-###Kullanıcı Ekleme (ContactController)(Post)
+### Kullanıcı Ekleme (ContactController)(Post)
   -api/add-new-person endpointinden yeni kullanıcı ekleyebilirsiniz. Örnek JSON
 	{
       "name": "Ömer",
