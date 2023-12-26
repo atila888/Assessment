@@ -13,12 +13,22 @@ namespace Report.Controllers
 		{
 			_reportManager= reportManager;
 		}
-		[HttpGet("api/get-report-list")]
+        /// <summary>
+        /// Sistemin Hazırladığı veya Hazırlayacağı Rapor Listesi
+        /// </summary>
+        /// <returns>Rapor Listesini döner</returns>
+        // GET: api/get-report-list
+        [HttpGet("api/get-report-list")]
 		public async Task<List<ReportLookup>> GetReportList()
 		{
 			var result = await _reportManager.GetReportList();
 			return result;
 		}
+        /// <summary>
+        /// Sistemin Hazırladığı Rapor içeriği
+        /// </summary>
+        /// <returns>Rapor İçeriğini döner</returns>
+        // GET: api/get-report-list-detail/{id}
         [HttpGet("api/get-report-list-detail/{id}")]
         public async Task<List<ReportContent>> GetReportListDetail(int id)
         {
