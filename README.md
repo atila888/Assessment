@@ -20,9 +20,9 @@
   
 -Rapor Oluşturma Mimarisi
 
-	<p align="center">
-	  <img src="./report-arc.png" alt="Rapor Oluşturma Mimarisi" width="738">
-	</p>
+<p align="center">
+  <img src="./report-arc.png" alt="Rapor Oluşturma Mimarisi" width="738">
+</p>
   
 -Başlarken:
   
