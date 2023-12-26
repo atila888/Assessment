@@ -24,7 +24,7 @@ namespace Contact.Test.IntegrationTest
 		private readonly string corparete= "Profe";
 
 		private readonly int idperson = 1;
-		private readonly int contacttype = 1;
+		private readonly Enum contacttype = ContactType.Phone;
 		private readonly string Content = "0123 456 78 90";
 
 		public ContactControllerTests(IntegrationWebApplicationFactory<Startup> factory)
@@ -70,7 +70,7 @@ namespace Contact.Test.IntegrationTest
 		public async Task Add_Contact_Info(string url)
 		{
 			var client = _factory.CreateClient();
-			var data = new ContactRequest { IdPerson=idperson, ContactType=contacttype, Content= Content };
+			var data = new ContactRequest { IdPerson=idperson, ContactType= (ContactType)contacttype, Content= Content };
 			var json = JsonConvert.SerializeObject(data);
 			var content = new StringContent(json, Encoding.UTF8, MediaTypeNames.Application.Json);
 
