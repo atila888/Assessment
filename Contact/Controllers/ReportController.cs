@@ -14,6 +14,7 @@ namespace Contact.Controllers
             _reportManager = reportManager;
         }
         [HttpPost("api/exec-location-report")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<bool> ExecLocationReport(ReportLookup reportLookup)
         {
             var result = await _reportManager.ExecLocationReport(reportLookup);

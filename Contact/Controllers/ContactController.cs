@@ -18,43 +18,94 @@ namespace Contact.Controllers
 			_contactManager = contactManager;
 			_reportManager = reportManager;
 		}
-		[HttpPost("api/add-new-person")]
+        /// <summary>
+        /// Yeni Kişi Ekleme
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/add-new-person
+        ///     {
+        ///       "name": "Ömer",
+        ///       "surName": "Atila",
+        ///       "corparete": "Rise Technology"       
+        ///     }
+        /// </remarks>
+        /// <param name="PersonRequest"></param>       
+        [HttpPost("api/add-new-person")]
 		public async Task<bool> AddNewPerson(PersonRequest person)
 		{
 			var result = await _contactManager.AddNewPerson(person);
 			return result;
 		}
-		[HttpPost("api/delete-person")]
+        /// <summary>
+        /// Kişi Silme
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpPost("api/delete-person")]
 		public async Task<bool> DeletePerson(int id)
 		{
 			var result = await _contactManager.DeletePerson(id);
 			return result;
 		}
-		[HttpPost("api/add-contact-info")]
+        /// <summary>
+        /// Kişiye Contact Bilgisi Ekleme
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     POST api/add-contact-info
+        ///     {
+        ///       "idPerson": 1,
+        ///       "contactType": 1, //Phone=1,Mail=2,Location=3
+        ///       "content": "02161234567"      
+        ///     }
+        /// </remarks>
+        /// <param name="ContactRequest"></param>
+        [HttpPost("api/add-contact-info")]
 		public async Task<bool> AddContactInfo(ContactRequest contactRequest)
 		{
 			var result = await _contactManager.AddContactInfo(contactRequest);
 			return result;
 		}
-		[HttpPost("api/delete-contact-info")]
+        /// <summary>
+        /// Contact Bilgisi Silme
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpPost("api/delete-contact-info")]
 		public async Task<bool> DeleteContactInfo(int id)
 		{
 			var result = await _contactManager.DeleteContactInfo(id);
 			return result;
 		}
-		[HttpGet("api/get-people")]
+        /// <summary>
+        /// Tüm Kişilerin Listesini Çekme
+        /// </summary>
+        /// <returns>Kişileri Liste olarak döner</returns>
+        // GET: api/get-people
+        [HttpGet("api/get-people")]
 		public async Task<List<Person>> GetPeople()
 		{
 			var result = await _contactManager.GetPeople();
 			return result;
 		}
-		[HttpGet("api/get-person-info/{id}")]
+        /// <summary>
+        /// Bir Kişiye bağlı kişi bilgileri ve Contact bilgileri çekme
+        /// </summary>
+        /// <returns>Kişi bilgilerini ve Contact bilgilerini döner</returns>
+        // GET: api/get-person-info/{id}
+        [HttpGet("api/get-person-info/{id}")]
 		public async Task<PersonContactInfoResponse> GetPersonInfo(int id)
 		{
 			var result = await _contactManager.GetPersonInfo(id);
 			return result;
 		}
-		[HttpGet("api/get-location-report/{location}")]
+        /// <summary>
+        /// Kişinin locationa bağlı rapor bilgilerini hazırlamak için endpoint
+        /// </summary>
+        /// <returns>RabbitMQ kuyruğuna atıldıysa true döner</returns>
+        // GET: api/get-location-report/{location}
+        [HttpGet("api/get-location-report/{location}")]
 		public async Task<bool> GetLocationReport(string location)
 		{
 			var result = await _reportManager.GetLocationReport(location);

@@ -61,7 +61,7 @@ namespace Contact.Business.Manager.Implement
 				//Automapper Kullanılabilirdi.
 				ContactInfo contactInfo = new ContactInfo();
 				contactInfo.IdPerson=contactRequest.IdPerson;
-				contactInfo.ContactType=contactRequest.ContactType;
+				contactInfo.ContactType = Convert.ToInt32(contactRequest.ContactType);
 				contactInfo.Content=contactRequest.Content;
 
 				await _contactInfoRepository.AddContactInfo(contactInfo);
