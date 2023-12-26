@@ -46,10 +46,24 @@
 	  
 ## Usage
 
-### Kullanıcı Ekleme (ContactController)(Post)
-  -api/add-new-person endpointinden yeni kullanıcı ekleyebilirsiniz. Örnek JSON
-	{
-      "name": "Ömer",
-      "surName": "Atila",
-      "corparete": "Rise Technology" 
-    }
+### Kişi Ekleme (ContactController)(Post)(ReturnValue : bool)
+  -api/add-new-person endpointinden yeni kişi ekleyebilirsiniz. Örnek JSON
+	  {
+	    "name": "Ömer",
+	    "surName": "Atila",
+	    "corparete": "Rise Technology" 
+	  }
+	  
+### Kişi Silme (ContactController)(Post)(ReturnValue : bool)
+  -api/delete-person endpointinden var olan kişiyi silebilirsiniz. Örnek JSON
+	  {
+	    "id": 1 
+	  }
+	  
+### Kişiye Contact Bilgisi Ekleme (ContactController)(Post)(ReturnValue : bool)
+  -api/add-contact-info endpointinden yeni kullanıcı ekleyebilirsiniz. Örnek JSON
+	  {
+	    "idPerson": 1, //Kullanıcı id
+	    "contactType": 1, //Phone=1,Mail=2,Location=3
+        "content": "02161234567"      
+      }
